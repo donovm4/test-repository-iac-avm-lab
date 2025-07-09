@@ -13,14 +13,10 @@ provider "azurerm" {
   subscription_id                 = var.subscription_id
 }
 
-resource "azurerm_resource_group" "contoso_rg" {
-  name     = "${var.prefix}_rg"
-  location = var.region
-  tags     = var.tags
-}
+resource "azurerm_resource_group" "demo" {
+  for_each = var.resource_groups
 
-resource "azurerm_resource_group" "contoso_dev_rg" {
-  name     = "${var.prefix}_dev_rg"
+  name = "${var.prefix}_${each.value}"
   location = var.region
-  tags     = var.tags
+  tags = var.tags
 }

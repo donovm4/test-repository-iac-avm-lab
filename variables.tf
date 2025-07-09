@@ -1,5 +1,13 @@
-# No default means that we will be prompted for it? or supply with .tfvars? or supply with ENV variable input?
-variable "prefix" {}
+variable resource_groups {
+  type        = map(string)
+  description = "The resource groups to deploy"
+}
+
+variable "prefix" {
+  type        = string
+  description = "A prefix for all resources"
+  default     = "contoso"
+}
 
 variable "region" {
   type        = string
@@ -11,7 +19,6 @@ variable "region" {
   }
 }
 
-# No default means that we will be prompted for it? or supply with .tfvars? or supply with ENV variable input?
 variable "tags" {
   type        = map(any)
   description = "A map of tags"
